@@ -5,6 +5,8 @@ import { ArrowUpRight, Code2 } from 'lucide-react';
 
 // Projects section - displays key projects with neobrutalism design
 const Projects = () => {
+  const tagColors = ['bg-pink-300', 'bg-orange-300', 'bg-green-300', 'bg-cyan-300', 'bg-purple-300'];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -93,11 +95,11 @@ const Projects = () => {
                 </p>
 
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-8">
+                <div className="flex flex-wrap gap-3 mb-10">
                   {project.techStack.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 bg-white border-2 border-black text-xs font-bold text-black"
+                      className={`px-4 py-2 ${tagColors[i % tagColors.length]} border-2 border-black text-sm font-bold text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}
                     >
                       {tech}
                     </span>
