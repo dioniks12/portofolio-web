@@ -19,7 +19,7 @@ const Hero = () => {
 	};
 
 	return (
-		<section className="w-full min-h-[80vh] flex items-center justify-center px-4 pt-20 pb-10">
+		<section className="w-full min-h-[80vh] flex items-center justify-center px-4 pt-20 pb-32">
 			<motion.div
 				className="max-w-3xl w-full flex flex-col gap-8"
 				variants={containerVariants}
