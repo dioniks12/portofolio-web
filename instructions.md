@@ -56,3 +56,21 @@ Maintain a flat and modular directory structure:
 - **DO NOT** use inline styles; all styling must be handled via Tailwind classes.
 - **DO NOT** remove functional code or comments without explaining why.
 - **DO NOT** ignore accessibility (use semantic HTML tags like `<nav>`, `<main>`, `<section>`).
+
+## 8. Design Style: Neobrutalism
+- **Core Aesthetic:** High contrast, bold black borders, and flat hard shadows.
+- **Borders:** Use `border-2` or `border-4` with `border-black` for almost every container/button.
+- **Shadows:** Use custom hard shadows instead of soft blurs (e.g., `shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`).
+- **Typography:** Use bold, heavy headings (e.g., `font-black`) with clean sans-serif body text.
+- **Color Palette:** Stark white or very vibrant colors (like neon yellow or bright blue) contrasted against solid black elements.
+- **Components:** Buttons and cards should look like they are "popping out" with hard offsets.
+- **Primary Reference:** https://id.pinterest.com/pin/560909328611673792/
+- **Style Note:** Strictly follow the Neobrutalism aesthetic from this reference for all components.
+
+## 9. Typography Configuration
+- **Primary Font (Headings):** Use 'Space Grotesk' or 'Archivo Black' from `next/font/google`.
+- **Secondary Font (Body):** Use 'Inter' or 'Sora'.
+- **Font Implementation:** - Always use `next/font/google` for optimization.
+    - Headings must use `font-black` (weight 900) and `tracking-tighter`.
+    - Body text should be clean and highly readable.
+- **Vibe:** The typography should feel loud, bold, and modern.
