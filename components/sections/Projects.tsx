@@ -44,8 +44,8 @@ const Projects = () => {
   ];
 
   return (
-    <section className="w-full py-32 px-4 bg-white my-20" id="projects">
-      <div className="max-w-5xl mx-auto">
+    <section className="w-full py-32 px-4 bg-white my-20 flex justify-center" id="projects">
+      <div className="max-w-4xl w-full mx-auto">
         {/* Heading */}
         <motion.div
           initial="hidden"

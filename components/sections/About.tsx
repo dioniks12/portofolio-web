@@ -41,9 +41,9 @@ const About = () => {
   ];
 
   return (
-    <section className="w-full py-32 px-4 bg-white my-20" id="about">
+    <section className="w-full py-32 px-4 bg-white my-20 flex justify-center" id="about">
       <motion.div
-        className="max-w-5xl mx-auto"
+        className="max-w-4xl w-full mx-auto"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"

@@ -30,8 +30,8 @@ const Skills = () => {
   ];
 
   return (
-    <section className="w-full py-32 px-4 bg-[#faf8f3] my-20" id="skills">
-      <div className="max-w-5xl mx-auto">
+    <section className="w-full py-32 px-4 bg-[#faf8f3] my-20 flex justify-center" id="skills">
+      <div className="max-w-4xl w-full mx-auto">
         {/* Heading */}
         <div className="mb-20">
           <h2 className="text-4xl sm:text-5xl font-black text-black tracking-tighter mb-2">

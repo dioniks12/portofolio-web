@@ -65,13 +65,13 @@ const Hero = () => {
 						className="inline-flex items-center gap-2 px-7 py-3 bg-yellow-400 text-black border-2 border-black font-bold text-base shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-yellow-300 transition-colors"
 					>
 						<Mail size={20} strokeWidth={3} />
-						Hubungi Saya
+						Get In Touch
 					</a>
 					<a
 						href="#projects"
 						className="inline-flex items-center gap-2 px-7 py-3 bg-white text-black border-2 border-black font-bold text-base shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-100 transition-colors"
 					>
-						Lihat Projek
+						My Projects
 						<ArrowRight size={20} strokeWidth={3} />
 					</a>
 				</motion.div>

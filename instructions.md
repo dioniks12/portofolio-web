@@ -47,7 +47,7 @@ Maintain a flat and modular directory structure:
 - [x] **Skills Section:** Visual display of tech stack (Next.js, React, Tailwind, PHP/Laravel, Docker, MySQL, PostgreSQL, Firebase).
 - [x] **Projects Section:** Showcase of key projects (e.g., Financial/Goods Management System, CCTV Monitoring Integration).
 - [x] **Experience Section:** Internship and professional development highlights.
-- [ ] **Contact Section:** Functional contact form and social links (LinkedIn, GitHub).
+- [x] **Contact Section:** Functional contact form and social links (LinkedIn, GitHub).
 - [ ] **SEO & Metadata:** Basic SEO optimization for each page.
 
 ## 7. "DO NOT" Instructions (Constraints)
