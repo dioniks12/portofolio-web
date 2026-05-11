@@ -58,8 +58,8 @@ const About = () => {
         </motion.div>
 
         {/* Main Narrative */}
-        <motion.div variants={itemVariants} className="mb-16">
-          <p className="text-lg text-black leading-relaxed font-medium mb-6 border-l-4 border-black pl-6">
+        <motion.div variants={itemVariants} className="mb-20">
+          <p className="text-lg text-black leading-relaxed font-medium mb-8 border-l-4 border-black pl-8">
             I'm Dioni Krisna, an Informatics Engineering graduate with a deep passion for building impactful 
             digital solutions. Throughout my academic journey and professional experience, I've developed expertise 
             in full-stack web development, system design, and problem-solving with code.
@@ -77,16 +77,16 @@ const About = () => {
         </motion.div>
 
         {/* Highlight Cards - 3 Column Grid */}
-        <motion.div variants={itemVariants} className="grid md:grid-cols-3 gap-6">
+        <motion.div variants={itemVariants} className="grid md:grid-cols-3 gap-8">
           {highlightCards.map((card, index) => {
             const IconComponent = card.icon;
             return (
               <div
                 key={index}
-                className={`${card.color} border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
+                className={`${card.color} border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
               >
-                <div className="flex flex-col gap-3">
-                  <div className="w-10 h-10 border-2 border-black bg-white flex items-center justify-center">
+                <div className="flex flex-col gap-5">
+                  <div className="w-12 h-12 border-2 border-black bg-white flex items-center justify-center mb-2">
                     <IconComponent size={22} strokeWidth={3} className="text-black" />
                   </div>
                   <h3 className="text-lg font-black text-black tracking-tight">{card.title}</h3>
