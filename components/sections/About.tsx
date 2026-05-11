@@ -41,7 +41,7 @@ const About = () => {
   ];
 
   return (
-    <section className="w-full py-32 px-4 bg-white" id="about">
+    <section className="w-full py-32 px-4 bg-white my-20" id="about">
       <motion.div
         className="max-w-5xl mx-auto"
         variants={containerVariants}

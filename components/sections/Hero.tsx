@@ -19,7 +19,7 @@ const Hero = () => {
 	};
 
 	return (
-		<section className="w-full min-h-[80vh] flex items-center justify-center px-4 pt-20 pb-32">
+		<section className="w-full min-h-[80vh] flex items-center justify-center px-4 pt-20 pb-32 my-20">
 			<motion.div
 				className="max-w-3xl w-full flex flex-col gap-8"
 				variants={containerVariants}
@@ -30,7 +30,7 @@ const Hero = () => {
 				<motion.div variants={itemVariants}>
 					<span className="inline-flex items-center gap-2 px-4 py-2 border-2 border-black bg-white font-bold text-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
 						<Sparkles size={18} className="text-yellow-400" strokeWidth={3} />
-						Informatics Engineer
+						Fresh Graduate of Informatics Engineering
 					</span>
 				</motion.div>
 
@@ -39,7 +39,7 @@ const Hero = () => {
 					variants={itemVariants}
 					className="text-5xl sm:text-6xl font-black text-black leading-tight tracking-tighter"
 				>
-					Dioni Krisna
+					Dioni Krisna Saputra Lodrigus
 				</motion.h1>
 
 				{/* Tagline */}
@@ -47,7 +47,7 @@ const Hero = () => {
 					variants={itemVariants}
 					className="text-lg font-bold text-blue-700 mb-2 tracking-tight"
 				>
-					Web & Mobile Developer
+					Fullstack Developer 
 				</motion.p>
 
 				{/* Description */}
@@ -55,7 +55,7 @@ const Hero = () => {
 					variants={itemVariants}
 					className="text-base text-black max-w-xl font-medium leading-relaxed border-2 border-black bg-yellow-100 p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
 				>
-					Passionate in building impactful digital solutions. Experienced in inventory systems, integrated monitoring, and modern web technology.
+					A passionate developer based in Madiun City, East Java. I specialize in Web Development using Laravel, MySQL, PostgreSQL, additionally, I have experience in Mobile Development using Flutter.
 				</motion.p>
 
 				{/* CTA Buttons */}
