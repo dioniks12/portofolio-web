@@ -1,7 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Briefcase, Code2, Camera, Mail, Send } from 'lucide-react';
+import { Briefcase, Code2, Camera, Mail, Send, Loader2, CheckCircle2, XCircle } from 'lucide-react';
+import { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 // Contact section - displays a contact form and social links with neobrutalism design
 const Contact = () => {
@@ -45,6 +47,50 @@ const Contact = () => {
     },
   ];
 
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    // You will need to replace these with your actual EmailJS credentials via environment variables
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS environment variables are missing.");
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (formRef.current) {
+      emailjs
+        .sendForm(serviceId, templateId, formRef.current, publicKey)
+        .then(
+          () => {
+            setSubmitStatus('success');
+            setIsSubmitting(false);
+            if (formRef.current) formRef.current.reset();
+            
+            // Reset status after 5 seconds
+            setTimeout(() => {
+              setSubmitStatus('idle');
+            }, 5000);
+          },
+          (error) => {
+            console.error('FAILED...', error.text);
+            setSubmitStatus('error');
+            setIsSubmitting(false);
+          }
+        );
+    }
+  };
+
   return (
     <section className="w-full py-32 pb-40 px-4 bg-white mb-20 border-b-4 border-black flex justify-center" id="contact">
       <div className="max-w-4xl w-full mx-auto">
@@ -70,27 +116,47 @@ const Contact = () => {
           className="grid md:grid-cols-2 gap-16"
         >
           {/* Contact Form */}
-          <motion.div variants={itemVariants} className="bg-[#faf8f3] border-2 border-black p-8 md:p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <motion.div variants={itemVariants} className="bg-[#faf8f3] border-2 border-black p-8 md:p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative">
             <h3 className="text-2xl font-black text-black tracking-tight mb-6">Send a Message</h3>
-            <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+            
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <div className="mb-6 p-4 bg-green-200 border-2 border-black flex items-center gap-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <CheckCircle2 className="text-green-700" size={24} />
+                <p className="font-bold text-green-900">Message sent successfully!</p>
+              </div>
+            )}
+            
+            {submitStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-200 border-2 border-black flex items-center gap-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <XCircle className="text-red-700" size={24} />
+                <p className="font-bold text-red-900">Failed to send message. Please try again or check setup.</p>
+              </div>
+            )}
+
+            <form ref={formRef} className="flex flex-col gap-6" onSubmit={sendEmail}>
               <div className="flex flex-col gap-2">
-                <label htmlFor="name" className="font-bold text-black text-sm">
+                <label htmlFor="user_name" className="font-bold text-black text-sm">
                   NAME
                 </label>
                 <input
                   type="text"
-                  id="name"
+                  id="user_name"
+                  name="user_name"
+                  required
                   placeholder="John Doe"
                   className="w-full p-4 bg-white border-2 border-black font-medium text-black outline-none focus:-translate-y-1 focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="font-bold text-black text-sm">
+                <label htmlFor="user_email" className="font-bold text-black text-sm">
                   EMAIL
                 </label>
                 <input
                   type="email"
-                  id="email"
+                  id="user_email"
+                  name="user_email"
+                  required
                   placeholder="john@example.com"
                   className="w-full p-4 bg-white border-2 border-black font-medium text-black outline-none focus:-translate-y-1 focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
                 />
@@ -101,6 +167,8 @@ const Contact = () => {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
+                  required
                   rows={4}
                   placeholder="How can I help you?"
                   className="w-full p-4 bg-white border-2 border-black font-medium text-black outline-none focus:-translate-y-1 focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all resize-none"
@@ -108,10 +176,24 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="w-full mt-2 py-4 bg-yellow-400 border-2 border-black font-black text-black text-lg flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:bg-yellow-300 transition-all"
+                disabled={isSubmitting}
+                className={`w-full mt-2 py-4 border-2 border-black font-black text-black text-lg flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all
+                  ${isSubmitting 
+                    ? 'bg-gray-300 opacity-70 cursor-not-allowed' 
+                    : 'bg-yellow-400 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:bg-yellow-300'
+                  }`}
               >
-                Send Message
-                <Send size={20} strokeWidth={3} />
+                {isSubmitting ? (
+                  <>
+                    Sending...
+                    <Loader2 size={20} strokeWidth={3} className="animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send size={20} strokeWidth={3} />
+                  </>
+                )}
               </button>
             </form>
           </motion.div>
