@@ -1,3 +1,4 @@
+import Navbar from '@/components/Navbar';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Skills from '@/components/sections/Skills';
@@ -10,7 +11,8 @@ import Footer from '@/components/Footer';
 const Home = () => {
   return (
     <>
-      <main className="min-h-screen w-full bg-[#faf8f3] flex flex-col gap-40 pb-40">
+      <Navbar />
+      <main className="min-h-screen w-full bg-[#faf8f3] flex flex-col pb-40">
         <Hero />
         <About />
         <Skills />

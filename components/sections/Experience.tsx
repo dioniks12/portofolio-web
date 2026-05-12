@@ -40,8 +40,41 @@ const Experience = () => {
   ];
 
   return (
-    <section className="w-full py-32 px-4 bg-[#faf8f3] my-20 flex justify-center" id="experience">
-      <div className="max-w-4xl mx-auto">
+    <section style={{ marginBottom: '80px' }} className="relative w-full pt-32 pb-40 px-4 bg-rose-200 border-y-4 border-black flex justify-center overflow-hidden" id="experience">
+      {/* Decorative shapes */}
+      <div className="absolute top-12 right-12 w-20 h-20 bg-white border-2 border-black rotate-12 opacity-40 hidden md:block" />
+      <div className="absolute top-24 right-8 w-10 h-10 bg-purple-400 border-2 border-black -rotate-6 opacity-50 hidden md:block" />
+      <div className="absolute bottom-20 left-6 w-12 h-12 bg-yellow-400 border-2 border-black rotate-3 opacity-60 hidden md:block" />
+      {/* Diagonal stripes accent */}
+      <div
+        className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: 'repeating-linear-gradient(-45deg, black 0px, black 2px, transparent 2px, transparent 20px)',
+        }}
+      />
+      {/* Dot grid */}
+      <div
+        className="absolute top-12 left-4 w-32 h-48 opacity-10 hidden md:block"
+        style={{
+          backgroundImage: 'radial-gradient(circle, black 1.5px, transparent 1.5px)',
+          backgroundSize: '14px 14px',
+        }}
+      />
+
+      <div className="max-w-4xl mx-auto relative z-10 w-full">
+        {/* Section Label */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={itemVariants}
+          className="mb-2"
+        >
+          <span className="inline-block px-3 py-1 bg-black text-white text-xs font-black tracking-widest uppercase border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,0.3)]">
+            04 — Where I've Worked
+          </span>
+        </motion.div>
+
         {/* Heading */}
         <motion.div
           initial="hidden"
@@ -53,7 +86,7 @@ const Experience = () => {
           <h2 className="text-4xl sm:text-5xl font-black text-black tracking-tighter mb-2">
             Experience
           </h2>
-          <div className="w-12 h-1 bg-purple-600"></div>
+          <div className="w-12 h-1.5 bg-purple-600" />
         </motion.div>
 
         {/* Timeline */}
@@ -67,12 +100,21 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <motion.div key={index} variants={itemVariants} className="ml-8 relative group">
               {/* Timeline Dot */}
-              <div className="absolute -left-[46px] top-4 w-6 h-6 bg-white border-4 border-black rounded-full group-hover:bg-purple-500 transition-colors"></div>
+              <motion.div
+                whileHover={{ scale: 1.3 }}
+                className="absolute -left-[46px] top-4 w-6 h-6 bg-white border-4 border-black rounded-full group-hover:bg-purple-500 transition-colors cursor-pointer"
+              />
+              {/* Timeline line accent dot */}
+              <div className="absolute -left-[54px] top-3 w-10 h-10 rounded-full bg-black/5 group-hover:bg-black/10 transition-colors" />
 
               {/* Experience Card */}
-              <div
-                className={`${exp.color} border-2 border-black p-8 md:p-10 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] group-hover:-translate-y-1 group-hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 flex flex-col gap-8`}
+              <motion.div
+                whileHover={{ y: -4, boxShadow: '10px 10px 0px 0px rgba(0,0,0,1)' }}
+                className={`${exp.color} border-2 border-black p-8 md:p-10 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 flex flex-col gap-8 relative`}
               >
+                {/* Corner decoration */}
+                <div className="absolute top-0 left-0 w-0 h-0 border-b-[28px] border-r-[28px] border-b-black border-r-transparent opacity-10" />
+
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                   <div className="flex flex-col gap-3">
                     <h3 className="text-2xl md:text-3xl font-black text-black tracking-tight flex items-center gap-3">
@@ -103,7 +145,7 @@ const Experience = () => {
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

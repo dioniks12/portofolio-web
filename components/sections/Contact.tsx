@@ -92,8 +92,32 @@ const Contact = () => {
   };
 
   return (
-    <section className="w-full py-32 pb-40 px-4 bg-white mb-20 border-b-4 border-black flex justify-center" id="contact">
-      <div className="max-w-4xl w-full mx-auto">
+    <section className="relative w-full pt-32 pb-48 px-4 bg-cyan-200 border-y-4 border-black flex justify-center overflow-hidden" id="contact">
+      {/* Decorative neobrutalism elements */}
+      <div className="absolute top-10 right-10 w-20 h-20 bg-white border-2 border-black rotate-12 opacity-40 hidden md:block" />
+      <div className="absolute top-18 right-6 w-10 h-10 bg-yellow-400 border-2 border-black -rotate-6 opacity-60 hidden md:block" />
+      <div className="absolute bottom-20 left-8 w-14 h-14 bg-violet-300 border-2 border-black rotate-3 opacity-50 hidden md:block" />
+      <div
+        className="absolute top-8 left-4 w-40 h-40 opacity-10 hidden md:block"
+        style={{
+          backgroundImage: 'radial-gradient(circle, black 1.5px, transparent 1.5px)',
+          backgroundSize: '14px 14px',
+        }}
+      />
+      <div className="max-w-4xl w-full mx-auto relative z-10">
+        {/* Section Label */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={itemVariants}
+          className="mb-2"
+        >
+          <span className="inline-block px-3 py-1 bg-black text-white text-xs font-black tracking-widest uppercase border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,0.3)]">
+            05 — Say Hello
+          </span>
+        </motion.div>
+
         {/* Heading */}
         <motion.div
           initial="hidden"
@@ -105,7 +129,7 @@ const Contact = () => {
           <h2 className="text-4xl sm:text-5xl font-black text-black tracking-tighter mb-2">
             Get In Touch
           </h2>
-          <div className="w-12 h-1 bg-yellow-400"></div>
+          <div className="w-12 h-1.5 bg-yellow-400" />
         </motion.div>
 
         <motion.div
