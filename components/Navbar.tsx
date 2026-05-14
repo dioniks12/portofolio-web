@@ -1,71 +1,36 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X, Code2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-// Navbar - neobrutalism style: bold border, hard shadow, accent highlights
+// Navbar — fixed top navigation using Next.js Link for client-side routing.
+// Active state is determined by comparing current pathname with each link's href.
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/about' },
+  { label: 'Skills', href: '/skills' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Experience', href: '/experience' },
+  { label: 'Certificates', href: '/certificates' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
-      // Determine active section
-      const sections = navLinks.map((l) => l.href.replace('#', ''));
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 100) {
-            setActiveSection(sections[i]);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleLinkClick = (href: string) => {
-    setIsOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+  // usePathname returns the current URL path, used to highlight the active nav link
+  const pathname = usePathname();
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#faf8f3] border-b-4 border-black shadow-[0_4px_0_0_rgba(0,0,0,1)]'
-          : 'bg-[#faf8f3] border-b-4 border-black'
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#faf8f3] border-b-4 border-black shadow-[0_4px_0_0_rgba(0,0,0,0.05)]">
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-[68px]">
-        {/* Logo */}
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
+
+        {/* Logo — links back to the home (Hero) page */}
+        <Link
+          href="/"
           className="flex items-center gap-2 group"
-          aria-label="Go to top"
+          aria-label="Go to home"
         >
           <div className="w-9 h-9 bg-yellow-400 border-2 border-black flex items-center justify-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] group-hover:translate-x-[2px] group-hover:translate-y-[2px] transition-all">
             <Code2 size={18} strokeWidth={3} className="text-black" />
@@ -73,16 +38,17 @@ const Navbar = () => {
           <span className="font-black text-lg tracking-tighter text-black">
             Dioni<span className="text-blue-600">.</span>dev
           </span>
-        </a>
+        </Link>
 
-        {/* Desktop Links */}
+        {/* Desktop navigation links */}
         <ul className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.href.replace('#', '');
+            // A link is active if the current pathname starts with its href
+            const isActive = pathname === link.href;
             return (
               <li key={link.href}>
-                <button
-                  onClick={() => handleLinkClick(link.href)}
+                <Link
+                  href={link.href}
                   className={`relative px-4 py-2 font-black text-sm tracking-tight border-2 transition-all duration-150 
                     ${
                       isActive
@@ -91,25 +57,21 @@ const Navbar = () => {
                     }`}
                 >
                   {link.label}
-                </button>
+                </Link>
               </li>
             );
           })}
         </ul>
 
-        {/* CTA Button - Desktop */}
-        <a
-          href="#contact"
-          onClick={(e) => {
-            e.preventDefault();
-            handleLinkClick('#contact');
-          }}
+        {/* Hire Me CTA button — navigates to the /contact page */}
+        <Link
+          href="/contact"
           className="hidden md:inline-flex items-center gap-2 px-5 py-2 bg-black text-white border-2 border-black font-black text-sm shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-900 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
         >
           Hire Me 🚀
-        </a>
+        </Link>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile hamburger toggle */}
         <button
           id="navbar-mobile-toggle"
           onClick={() => setIsOpen((prev) => !prev)}
@@ -120,7 +82,7 @@ const Navbar = () => {
         </button>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile dropdown menu — animated open/close */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -133,12 +95,13 @@ const Navbar = () => {
           >
             <ul className="flex flex-col px-4 py-4 gap-2">
               {navLinks.map((link) => {
-                const isActive = activeSection === link.href.replace('#', '');
+                const isActive = pathname === link.href;
                 return (
                   <li key={link.href}>
-                    <button
-                      onClick={() => handleLinkClick(link.href)}
-                      className={`w-full text-left px-4 py-3 font-black text-base border-2 transition-all
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`block w-full px-4 py-3 font-black text-base border-2 transition-all
                         ${
                           isActive
                             ? 'bg-yellow-400 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] text-black'
@@ -146,21 +109,18 @@ const Navbar = () => {
                         }`}
                     >
                       {link.label}
-                    </button>
+                    </Link>
                   </li>
                 );
               })}
               <li>
-                <a
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleLinkClick('#contact');
-                  }}
+                <Link
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
                   className="block w-full px-4 py-3 bg-black text-white border-2 border-black font-black text-base text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-900 transition-colors mt-2"
                 >
                   Hire Me 🚀
-                </a>
+                </Link>
               </li>
             </ul>
           </motion.div>

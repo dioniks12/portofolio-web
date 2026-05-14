@@ -1,13 +1,20 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { ArrowUpRight, Code2 } from 'lucide-react';
+import { motion, Variants  } from "framer-motion";
+import { ArrowUpRight, Code2 } from "lucide-react";
+import Image from 'next/image';
 
 // Projects section - displays key projects with neobrutalism design
 const Projects = () => {
-  const tagColors = ['bg-pink-300', 'bg-orange-300', 'bg-green-300', 'bg-cyan-300', 'bg-purple-300'];
+  const tagColors = [
+    "bg-pink-300",
+    "bg-orange-300",
+    "bg-green-300",
+    "bg-cyan-300",
+    "bg-purple-300",
+  ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -17,46 +24,95 @@ const Projects = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const projects = [
     {
-      title: 'Financial & Goods Management System',
+      title: "Financial & Goods Management System for UMKM",
       description:
-        'A comprehensive system for tracking inventory, financial records, and supply chain operations. Built with a focus on data accuracy and intuitive reporting interfaces.',
-      techStack: ['Laravel', 'MySQL', 'Tailwind CSS'],
-      color: 'bg-green-300',
-      imagePlaceholder: 'bg-green-100',
-      githubLink: '#',
-      demoLink: '#',
-      number: '01',
+        "A comprehensive system for tracking inventory, financial records, and supply chain operations. Built with a focus on data accuracy and intuitive reporting interfaces.",
+      techStack: ["Laravel", "MySQL", "Tailwind CSS"],
+      color: "bg-green-300",
+      image: "/images/project3.png",
+      githubLink: "#",
+      demoLink: "#",
+      number: "01",
     },
     {
-      title: 'Integrated CCTV Monitoring',
+      title: "Monitoring CCTV System",
       description:
-        'A real-time monitoring dashboard that integrates multiple CCTV feeds into a centralized web interface, featuring alert management and system status tracking.',
-      techStack: ['Next.js', 'React', 'Node.js'],
-      color: 'bg-purple-300',
-      imagePlaceholder: 'bg-purple-100',
-      githubLink: '#',
-      demoLink: '#',
-      number: '02',
+        "A real-time monitoring dashboard that integrates multiple CCTV feeds into a centralized web interface, featuring RTSP to support media live streaming.",
+      techStack: ["Laravel", "Javascript", "MySQL", "PostgreSQL"],
+      color: "bg-purple-300",
+      image: "/images/project4.png",
+      githubLink: "https://github.com/dioniks12/magangCCTV_Kominfo.git",
+      demoLink: "#",
+      number: "02",
+    },
+    {
+      title: "Bakery and Sales System",
+      description:
+        "A bakery and order sales web and mobile based using Laravel, MySQL, and Flutter.",
+      techStack: ["Laravel", "MySQL", "Flutter"],
+      color: "bg-yellow-300",
+      image: "/images/project2.png",
+      githubLink: "https://github.com/dioniks12/P3L_Atma_Kitchen.git",
+      demoLink: "#",
+      number: "03",
+    },
+    {
+      title: "Quick Fresh Laundry System",
+      description:
+        "Quick Fresh Laundry is a web-based platform designed to help customers manage their laundry transactions online, saving time and minimizing waiting lines at the physical store.",
+      techStack: ["Laravel", "MySQL"],
+      color: "bg-orange-300",
+      image: "/images/project5.png",
+      githubLink: "https://github.com/dioniks12/PW2023_D_2_Laravel.git",
+      demoLink: "#",
+      number: "04",
+    },
+    {
+      title: "Conference Management System",
+      description:
+        "This project focuses on facilitating the conference experience by implementing a comprehensive online management system.",
+      techStack: ["Laravel", "MySQL", "Docker", "Javascript"],
+      color: "bg-blue-300",
+      image: "/images/project1.png",
+      githubLink: "#",
+      demoLink: "#",
+      number: "05",
+    },
+    {
+      title: "Learning Management System",
+      description:
+        "This project provide various course for learn and used it for education based on any subject",
+      techStack: ["Laravel", "MySQL", "Docker", "Tailwind CSS"],
+      color: "bg-red-300",
+      image: "/images/project6.png",
+      githubLink: "#",
+      demoLink: "#",
+      number: "06",
     },
   ];
 
   return (
-    <section style={{ marginBottom: '80px' }} className="relative w-full pt-32 pb-40 px-4 bg-amber-200 border-y-4 border-black flex justify-center overflow-hidden" id="projects">
+    <section className="relative w-full min-h-screen flex flex-col items-center px-4 pt-40 pb-20 bg-amber-200 overflow-x-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-8 right-16 w-20 h-20 bg-white border-2 border-black rotate-6 opacity-40 hidden md:block" />
-      <div className="absolute top-16 right-10 w-10 h-10 bg-pink-400 border-2 border-black -rotate-12 opacity-50 hidden md:block" />
-      <div className="absolute bottom-16 left-8 w-16 h-16 bg-cyan-300 border-2 border-black rotate-3 opacity-50 hidden md:block" />
+      <div className="absolute top-8 right-16 w-20 h-20 bg-white border-2 border-black rotate-6 opacity-40 hidden md:block z-0" />
+      <div className="absolute top-16 right-10 w-10 h-10 bg-pink-400 border-2 border-black -rotate-12 opacity-50 hidden md:block z-0" />
+      <div className="absolute bottom-16 left-8 w-16 h-16 bg-cyan-300 border-2 border-black rotate-3 opacity-50 hidden md:block z-0" />
       {/* Dot grid bottom-right */}
       <div
         className="absolute bottom-8 right-4 w-48 h-48 opacity-10 hidden md:block"
         style={{
-          backgroundImage: 'radial-gradient(circle, black 1.5px, transparent 1.5px)',
-          backgroundSize: '14px 14px',
+          backgroundImage:
+            "radial-gradient(circle, black 1.5px, transparent 1.5px)",
+          backgroundSize: "14px 14px",
         }}
       />
 
@@ -80,7 +136,7 @@ const Projects = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={itemVariants}
-          className="mb-20"
+          className="mb-8"
         >
           <h2 className="text-4xl sm:text-5xl font-black text-black tracking-tighter mb-2">
             Featured Projects
@@ -100,7 +156,10 @@ const Projects = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ y: -6, boxShadow: '10px 10px 0px 0px rgba(0,0,0,1)' }}
+              whileHover={{
+                y: -6,
+                boxShadow: "10px 10px 0px 0px rgba(0,0,0,1)",
+              }}
               className={`${project.color} border-2 border-black flex flex-col shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 relative`}
             >
               {/* Project number watermark */}
@@ -108,15 +167,19 @@ const Projects = () => {
                 {project.number}
               </span>
 
-              {/* Image Placeholder */}
-              <div
-                className={`w-full h-48 border-b-2 border-black flex items-center justify-center p-6 ${project.imagePlaceholder}`}
+                <div
+                className={`relative w-full h-48 border-b-2 border-black overflow-hidden ${project.imagePlaceholder}`}
               >
-                <div className="w-full h-full border-2 border-dashed border-black/30 flex items-center justify-center">
-                  <span className="font-bold text-black/50 tracking-widest uppercase text-sm">
-                    Project Preview
-                  </span>
-                </div>
+                {/* 1. Hapus div dashed, ganti dengan Image */}
+                <Image
+                  src={project.image} // Ambil dari data objek
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                {/* 2. Optional: Tambahkan overlay biar gaya Neobrutalism-nya makin dapet */}
+                <div className="absolute inset-0 bg-black/5 pointer-events-none" />
               </div>
 
               {/* Content */}
@@ -143,10 +206,10 @@ const Projects = () => {
                 {/* Links */}
                 <div className="flex gap-4 mt-auto">
                   <a
-                    href={project.demoLink}
+                    href={project.githubLink}
                     className="flex-1 flex items-center justify-center gap-2 bg-black text-white border-2 border-black py-3 font-bold text-sm hover:bg-gray-800 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                   >
-                    Live Demo
+                    Source Code
                     <ArrowUpRight size={18} strokeWidth={3} />
                   </a>
                   <a
