@@ -13,7 +13,7 @@ const Experience = () => {
     "bg-purple-300",
   ];
 
-  const containerVariants: Variants = {
+  const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -21,7 +21,7 @@ const Experience = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants : Variants = {
     hidden: { opacity: 0, x: -30 },
     visible: {
       opacity: 1,

@@ -14,7 +14,7 @@ const Projects = () => {
     "bg-purple-300",
   ];
 
-  const containerVariants: Variants = {
+  const containerVariants  = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -22,7 +22,7 @@ const Projects = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants : Variants =  {
     hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
@@ -168,7 +168,7 @@ const Projects = () => {
               </span>
 
                 <div
-                className={`relative w-full h-48 border-b-2 border-black overflow-hidden ${project.imagePlaceholder}`}
+                className={`relative w-full h-48 border-b-2 border-black overflow-hidden ${project.image}`}
               >
                 {/* 1. Hapus div dashed, ganti dengan Image */}
                 <Image
