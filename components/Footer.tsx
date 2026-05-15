@@ -18,12 +18,13 @@ const Footer = () => {
 
       <div className="max-w-5xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Copyright */}
-        <p className="text-white/50 font-medium text-sm text-center"></p>
+        <p className="text-white/50 font-medium text-sm text-center">
+          copyright &copy; {currentYear} Dioni Krisna Saputra Lodrigus. All rights reserved.
+        </p>
 
         {/* Tech stack credit */}
         <p className="text-white/30 text-xs font-medium text-center md:text-right">
-          copyright &copy; {currentYear} Dioni Krisna Saputra Lodrigus. All
-          rights reserved.
+          
         </p>
       </div>
     </footer>
