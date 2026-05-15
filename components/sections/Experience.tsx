@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { Briefcase } from "lucide-react";
+import { BriefcaseBusiness } from "lucide-react";
 
 // Experience section - displays professional timeline with neobrutalism design
 const Experience = () => {
@@ -32,7 +32,7 @@ const Experience = () => {
 
   const experiences = [
     {
-      role: "Software Development Internship",
+      role: "[Software Development Internship]",
       company: "PT Santai Berkualitas Syberindo",
       period: "Okt 2025 - Apr 2026",
       description:
@@ -41,13 +41,40 @@ const Experience = () => {
       color: "bg-yellow-300",
     },
     {
-      role: "Software Development Internship",
+      role: "[Software Development Internship]",
       company: "Dinas Komunikasi dan Informatika Kota Madiun",
       period: "Jan 2025 - Feb 2025",
       description:
         "Working on a internship project about CCTV monitoring system by integrating the RTSP protocol with Laravel for real-time live streaming",
       techStack: ["PHP Laravel", "MySQL", "PostgreSQL"],
       color: "bg-cyan-300",
+    },
+    {
+      role: "[Volunteer Donor Darah Campus Event]",
+      company: "Universitas Atma Jaya Yogyakarta",
+      period: "Sep 2023",
+      description:
+        "Joined the publications division and successfully created infographics about the event and posted them on social media to encourage as many people as possible to become blood donors",
+      techStack: ["Graphic Design", "Volunteer", "Teamwork"],
+      color: "bg-pink-200",
+    },
+    {
+      role: "[Active Member Java Programming Language Community]",
+      company: "KSP UAJY",
+      period: "Feb 2023 - Jun 2023",
+      description:
+        "Understanding the Java programming language to assist in the process of completing the final project for the course",
+      techStack: ["Java"],
+      color: "bg-green-300",
+    },
+    {
+      role: "[Active Member C Programming Language Community]",
+      company: "KSP UAJY",
+      period: "Aug 2021 - May 2022",
+      description:
+        "Successfully finished assignment task in every sessions to improve critical thinking and problem solving skills",
+      techStack: ["C#", "Flowchart", "Critical Thinking"],
+      color: "bg-purple-300",
     },
   ];
 
@@ -95,7 +122,7 @@ const Experience = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={itemVariants}
-          className="mb-8"
+          className="mb-20"
         >
           <h2 className="text-4xl sm:text-5xl font-black text-black tracking-tighter mb-2">
             Experience
@@ -139,7 +166,7 @@ const Experience = () => {
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                   <div className="flex flex-col gap-3">
                     <h3 className="text-2xl md:text-3xl font-black text-black tracking-tight flex items-center gap-3">
-                      <Briefcase
+                      <BriefcaseBusiness
                         size={28}
                         strokeWidth={3}
                         className="shrink-0"

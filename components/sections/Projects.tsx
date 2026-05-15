@@ -37,7 +37,7 @@ const Projects = () => {
       description:
         "A comprehensive system for tracking inventory, financial records, and supply chain operations. Built with a focus on data accuracy and intuitive reporting interfaces.",
       techStack: ["Laravel", "MySQL", "Tailwind CSS"],
-      color: "bg-green-300",
+      color: "bg-green-200",
       image: "/images/project3.png",
       githubLink: "#",
       demoLink: "#",
@@ -70,7 +70,7 @@ const Projects = () => {
       description:
         "Quick Fresh Laundry is a web-based platform designed to help customers manage their laundry transactions online, saving time and minimizing waiting lines at the physical store.",
       techStack: ["Laravel", "MySQL"],
-      color: "bg-orange-300",
+      color: "bg-orange-200",
       image: "/images/project5.png",
       githubLink: "https://github.com/dioniks12/PW2023_D_2_Laravel.git",
       demoLink: "#",
@@ -116,7 +116,7 @@ const Projects = () => {
         }}
       />
 
-      <div className="max-w-4xl w-full mx-auto relative z-10">
+      <div className="max-w-6xl w-full mx-auto relative z-10">
         {/* Section Label */}
         <motion.div
           initial="hidden"
@@ -150,7 +150,7 @@ const Projects = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid md:grid-cols-2 gap-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects.map((project, index) => (
             <motion.div

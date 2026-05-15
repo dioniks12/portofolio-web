@@ -105,8 +105,7 @@ const Hero = () => {
           className="text-base text-black max-w-xl font-medium leading-relaxed border-2 border-black bg-yellow-100 p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
         >
           A passionate developer based in Madiun City, East Java. I specialize
-          in Web Development using Laravel, MySQL, PostgreSQL, additionally, I
-          have experience in Mobile Development using Flutter.
+          in Web Development using Laravel, Next Js, MySQL, PostgreSQL.
         </motion.p>
 
         {/* CTA buttons — use next/link for internal navigation */}

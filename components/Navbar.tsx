@@ -36,7 +36,7 @@ const Navbar = () => {
             <Code2 size={18} strokeWidth={3} className="text-black" />
           </div>
           <span className="font-black text-lg tracking-tighter text-black">
-            Dioni<span className="text-blue-600">.</span>dev
+            Dion<span className="text-blue-600">.</span>dev
           </span>
         </Link>
 
